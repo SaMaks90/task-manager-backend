@@ -51,6 +51,7 @@ export class UsersService {
       where: { id },
       data: {
         role,
+        updatedAt: new Date(),
       },
       omit: {
         password: true,
