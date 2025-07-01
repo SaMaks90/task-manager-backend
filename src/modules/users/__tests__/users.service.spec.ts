@@ -110,7 +110,7 @@ describe('UsersService', () => {
   });
 
   it('should update user and omit password', async () => {
-    const updateData = { username: 'UpdatedName', updatedAt: new Date() };
+    const updateData = { username: 'UpdatedName' };
 
     const updatedUser = { ...mockUser, ...updateData };
     const { password, ...expected } = updatedUser;
@@ -124,7 +124,7 @@ describe('UsersService', () => {
     expect(result).toEqual(expected);
     expect(prisma.user.update).toHaveBeenCalledWith({
       where: { id: mockUser.id },
-      data: updateData,
+      data: { ...updateData, updatedAt: expect.any(Date) },
       omit: { password: true },
     });
   });
@@ -144,7 +144,7 @@ describe('UsersService', () => {
     expect(result).toEqual(expected);
     expect(prisma.user.update).toHaveBeenCalledWith({
       where: { id: mockUser.id },
-      data: { role: newRole },
+      data: { role: newRole, updatedAt: expect.any(Date) },
       omit: { password: true },
     });
   });

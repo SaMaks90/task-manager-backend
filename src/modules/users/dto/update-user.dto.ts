@@ -26,9 +26,6 @@ export class UpdateUserDto
   @IsString()
   username?: string;
 
-  @IsDate()
-  updatedAt: Date;
-
   @IsOptional()
   @IsString()
   @MinLength(6, { message: 'Password must be at least 6 characters long' })

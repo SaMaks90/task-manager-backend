@@ -29,7 +29,7 @@ export class UsersService {
   ): Promise<Omit<User, 'password'> | null> {
     return this.prisma.user.update({
       where: { id },
-      data: { ...updateData },
+      data: { ...updateData, updatedAt: new Date() },
       omit: { password: true },
     });
   }

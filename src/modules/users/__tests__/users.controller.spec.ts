@@ -20,12 +20,11 @@ describe('UsersController', () => {
 
   const updateUserDto: UpdateUserDto = {
     email: 'newtest@gmail.com',
-    updatedAt: new Date(),
   };
   const mockUserAfterUpdate: Omit<User, 'password'> = {
     id: mockUser.id,
     email: updateUserDto.email || '',
-    updatedAt: updateUserDto.updatedAt,
+    updatedAt: new Date(),
     createdAt: mockUser.createdAt,
     username: mockUser.username,
     role: mockUser.role,
@@ -34,7 +33,7 @@ describe('UsersController', () => {
   const mockUserAfterUpdateRole: Omit<User, 'password'> = {
     id: mockUser.id,
     email: updateUserDto.email || '',
-    updatedAt: updateUserDto.updatedAt,
+    updatedAt: new Date(),
     createdAt: mockUser.createdAt,
     username: mockUser.username,
     role: Role.admin,
